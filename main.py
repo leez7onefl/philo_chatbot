@@ -83,7 +83,7 @@ def refine_response(text, prompt, model="gpt-4", max_length=1024):
 #______________________________________________________________
 
 def extract_text_from_pdf(file_content):
-    images = convert_from_bytes(file_content, poppler_path=r"./myenv/poppler-24.08.0/Library/bin")
+    images = convert_from_bytes(file_content, poppler_path=f"./myenv/poppler-24.08.0/Library/bin")
     text = ""
     for image in images:
         text += pytesseract.image_to_string(image)
