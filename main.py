@@ -165,14 +165,14 @@ def initialize_pinecone(api_key, index_name):
 
 def is_pinecone_index_empty(index):
     response = index.describe_index_stats()
-    return response['namespaces']['ns1']['vector_count'] == 0
+    return response['namespaces']['ns2']['vector_count'] == 0
 
 def store_vectors_in_pinecone(index, vectors):
-    index.upsert(vectors=vectors, namespace="ns1")
+    index.upsert(vectors=vectors, namespace="ns2")
 
 def query_pinecone_index(index, query_vector, top_k=5):
     response = index.query(
-        namespace="ns1",
+        namespace="ns2",
         vector=query_vector,
         top_k=top_k,
         include_values=False,
