@@ -1,0 +1,9 @@
+streamlit
+python-dotenv
+openai
+PyMuPDF
+numpy
+PyGithub
+pinecone-client
+pytesseract
+pdf2image
