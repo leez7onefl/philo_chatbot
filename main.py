@@ -4,6 +4,7 @@ from dotenv import load_dotenv, find_dotenv
 import openai
 import base64
 import pytesseract
+pytesseract.pytesseract.tesseract_cmd = r"./myenv/Tesseract-OCR/tesseract.exe"
 from pdf2image import convert_from_bytes
 from github import Github
 from pinecone import Pinecone
@@ -83,7 +84,6 @@ def refine_response(text, prompt, model="gpt-4", max_length=1024):
 
 def extract_text_from_pdf(file_content):
     images = convert_from_bytes(file_content, poppler_path=r"./myenv/poppler-24.08.0/Library/bin")
-    pytesseract.pytesseract.tesseract_cmd = r"./myenv/Tesseract-OCR/tesseract.exe"
     text = ""
     for image in images:
         text += pytesseract.image_to_string(image)
